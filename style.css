@@ -7,7 +7,6 @@ body{
 #login-area{
     margin-top: 10%;    
     padding: 0 20% 0 20%;
-    display: none;
 }
 .login-wrap{
     box-shadow: 5px 5px 10px gray;
@@ -15,7 +14,7 @@ body{
     padding: 10px;
 }
 #transaction-area{
-    display: block;
+    display: none;
     padding: 15% 10%;
 }
 .tr-style{

@@ -9,41 +9,35 @@ loginBtn.addEventListener('click', function(){
 //Deposite button handler
 const depositeBtn = document.getElementById('deposite-btn');
 depositeBtn.addEventListener('click', function(){
-    const inputDeposite = document.getElementById('input-deposite').value;
-    if(isNaN(inputDeposite)){
-        alert('Please give numbers only')
-    }
-    const depositeNumber = parseFloat(inputDeposite);
+    const depositeNumber = inputUpdate('input-deposite');
     
-    const addDeposite = document.getElementById('display-deposite').innerText;
-    const addDepositeNumber = parseFloat(addDeposite);
-    const totalDeposite = depositeNumber + addDepositeNumber;
-    document.getElementById('display-deposite').innerText = totalDeposite;
-    
-    const displayBalance = document.getElementById('display-balance').innerText;
-    const displayNumber = parseFloat(displayBalance);
-    const totalDisplay = displayNumber + depositeNumber;  
-    document.getElementById('display-balance').innerText = totalDisplay;
+    displayUpdate('display-deposite',depositeNumber);
+    displayUpdate('display-balance',depositeNumber);
+
     document.getElementById('input-deposite').value = '';
 })
+
 //Withdraw button handler
 const withdrawBtn = document.getElementById('withdraw-btn');
 withdrawBtn.addEventListener('click',function() {
-    const inputWithdraw = document.getElementById('input-withdraw').value;
-    const withdrawNumber = parseFloat(inputWithdraw);
+    const withdrawNumber = inputUpdate('input-withdraw');
 
-    const minusWithdraw = document.getElementById('display-withdraw').innerText;
-    const minusWithdrawNumber = parseFloat(minusWithdraw);
-    
-    const totalWithdraw = withdrawNumber + minusWithdrawNumber;
-    document.getElementById('display-withdraw').innerText = totalWithdraw;
-
-    const displayBalance = document.getElementById('display-balance').innerText;
-    const displayNumber = parseFloat(displayBalance);
-    console.log(displayNumber);
-    const totalDisplay = displayNumber - withdrawNumber;
-    console.log(totalDisplay);
-    document.getElementById('display-balance').innerText = totalDisplay;
+    displayUpdate('display-withdraw',withdrawNumber);
+    displayUpdate('display-balance',-1*withdrawNumber);
 
     document.getElementById('input-withdraw').value = '';
 })
+//input update
+function inputUpdate(n){
+    const input = document.getElementById(n).value;
+    const inputNumber = parseFloat(input);
+    return inputNumber;
+}
+// display update
+function displayUpdate(x,y){
+    const addamount = document.getElementById(x).innerText;
+    const addNumber = parseFloat(addamount);
+    const totalNumber = y + addNumber;
+    document.getElementById(x).innerText = totalNumber;
+}
+
